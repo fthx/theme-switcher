@@ -9,6 +9,7 @@ const { Gio, GObject, St } = imports.gi;
 const Main = imports.ui.main;
 const PanelMenu = imports.ui.panelMenu;
 
+var DEFAULT_SCHEME_NAME = 'default';
 var LIGHT_SCHEME_NAME = 'prefer-light';
 var DARK_SCHEME_NAME = 'prefer-dark';
 var LIGHT_SCHEME_ICON = 'weather-clear-symbolic';
@@ -26,6 +27,7 @@ class ThemeIndicator extends PanelMenu.Button {
         this.schema = Gio.Settings.new('org.gnome.desktop.interface');
         switch (this.schema.get_string('color-scheme')) {
             case LIGHT_SCHEME_NAME:
+            case DEFAULT_SCHEME_NAME:
                 this.icon.icon_name = LIGHT_SCHEME_ICON;
             break;
             case DARK_SCHEME_NAME:
@@ -43,6 +45,7 @@ class ThemeIndicator extends PanelMenu.Button {
     _toggle_theme() {
         switch (this.schema.get_string('color-scheme')) {
             case LIGHT_SCHEME_NAME:
+            case DEFAULT_SCHEME_NAME:
                 this.schema.set_string('color-scheme', DARK_SCHEME_NAME);
                 if (!this.schema.get_string('gtk-theme').endsWith("-dark")) {
                     this.schema.set_string('gtk-theme', this.schema.get_string('gtk-theme') + "-dark");
