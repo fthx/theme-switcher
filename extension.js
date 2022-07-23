@@ -43,6 +43,7 @@ class ThemeIndicator extends PanelMenu.Button {
     }
 
     _toggle_theme() {
+	Main.layoutManager.screenTransition.run();
         switch (this.schema.get_string('color-scheme')) {
             case LIGHT_SCHEME_NAME:
             case DEFAULT_SCHEME_NAME:
