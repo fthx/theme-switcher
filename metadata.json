@@ -3,7 +3,7 @@
   "description": "Button in panel: switch between global dark and light themes. For GNOME Shell 42+.",
   "name": "Light/Dark Theme Switcher",
   "shell-version": [
-    "42"
+    "42", "43"
   ],
   "url": "https://github.com/fthx/theme-switcher",
   "uuid": "theme-switcher@fthx",
